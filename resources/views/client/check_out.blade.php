@@ -67,25 +67,33 @@
                         </h4>
                         <div class="form-send">
                             <div class="mb-3 ">
-                                <input type="text"  class="form-control" name="name" placeholder="Please enter name *" style="color:black;">
+                                <input type="text"  class="form-control" name="name" placeholder="Please enter name *" required data-error="Please enter your name" style="color:black;">
+                                @error('name') <small style="color: red">{{ $message }}</small> @enderror
+
                             </div>
 
                             <div class="mb-3">
-                                <input type="email"  class="form-control" name="email" placeholder="Please enter email *" style="color:black;">
+                                <input type="email"  class="form-control" name="email" placeholder="Please enter email *" required data-error="Please enter your email" style="color:black;">
+                                @error('email') <small style="color: red">{{ $message }}</small> @enderror
+
                             </div>
 
                             <div class="mb-3">
-                                <input type="text"  class="form-control" name="phone" placeholder="Please enter phone *" style="color:black;">
+                                <input type="text"  class="form-control" name="phone" placeholder="Please enter phone *" required data-error="Please enter your phone" style="color:black;">
+                                @error('phone') <small style="color: red">{{ $message }}</small> @enderror
+
                             </div>
                             
                             <div >
-                                <input type="text"  class="form-control" name="address" placeholder="Please enter address *" style="color:black;">
+                                <input type="text"  class="form-control" name="address" placeholder="Please enter address *" required data-error="Please enter your address" style="color:black;">
+                                @error('address') <small style="color: red">{{ $message }}</small> @enderror
+
                             </div>
                         </div>
                         <hr class="mb-4">
                         <div class="" style="float:right;">
                             <a href="{{route('cart.view')}}" class="btn btn-hover btn-danger mr-2 " >Back</a>
-                            <button type="submit" class=" mr-auto btn btn-success"> PlaceOrder</button>
+                            <button type="submit" class="mr-auto btn btn-success" style="background:#b0b435;border:none;"><i class="far fa-shopping-basket"></i> PlaceOrder</button>
                         </div>
                        
                     </form>
@@ -132,8 +140,8 @@
                                 <div class="media mb-2 border-bottom">
                                     <div class="media-body"> <a
                                             href="{{route('client.shop_detail',['id' => $carts['id'],'slug' => Str::slug($carts['name'])])}}">{{$carts['name']}}</a>
-                                        <img src="{{url('public/uploads')}}/{{$carts['image']}}" width="80px"
-                                            height="80px" style="float:right;padding-bottom:10px;">
+                                        <img src="{{URL::asset('uploads')}}/{{$carts['image']}}" width="80px"
+                                            height="80px" style="float:right;padding-bottom:10px; object-fit:cover">
                                         <div class="small text-muted">Price: ${{number_format($carts['price'])}} <span
                                                 class="mx-2">|</span> Quantity: {{$carts['quantity']}} <span
                                                 class="mx-2">|</span> Subtotal:
@@ -167,16 +175,16 @@
                             </div>
                             <div class="d-flex">
                                 <h4>Discount</h4>
-                                <div class="ml-auto font-weight-bold"> $ 40 </div>
+                                <div class="ml-auto font-weight-bold"> $ 40.00 </div>
                             </div>
                             <hr class="my-1">
                             <div class="d-flex">
                                 <h4>Coupon Discount</h4>
-                                <div class="ml-auto font-weight-bold"> $ 10 </div>
+                                <div class="ml-auto font-weight-bold"> $ 10.00 </div>
                             </div>
                             <div class="d-flex">
                                 <h4>Tax</h4>
-                                <div class="ml-auto font-weight-bold"> $ 2 </div>
+                                <div class="ml-auto font-weight-bold"> $ 2.00 </div>
                             </div>
                             <div class="d-flex">
                                 <h4>Shipping Cost</h4>
@@ -185,7 +193,7 @@
                             <hr>
                             <div class="d-flex gr-total">
                                 <h5>Grand Total</h5>
-                                <div class="ml-auto h5"> $ {{number_format($cart->totalPrice  )}}</div>
+                                <div class="ml-auto h5"> $ {{number_format($cart->totalPrice, 2)}}</div>
                             </div>
                             <hr>
                         </div>
@@ -204,7 +212,7 @@
     <div class="main-instagram owl-carousel owl-theme">
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-01.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-01.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -212,7 +220,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-02.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-02.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -220,7 +228,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-03.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-03.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -228,7 +236,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-04.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-04.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -236,7 +244,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -244,7 +252,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-06.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-06.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -252,7 +260,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-07.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-07.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -260,7 +268,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-08.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-08.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -268,7 +276,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-09.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-09.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -276,7 +284,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>

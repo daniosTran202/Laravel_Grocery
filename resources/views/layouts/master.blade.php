@@ -16,20 +16,20 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{{url('public/master')}}/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{url('public/master')}}/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="{{URL::asset('master')}}/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{URL::asset('master')}}/images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{url('public/master')}}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{URL::asset('master')}}/css/bootstrap.min.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="{{url('public/master')}}/css/style.css">
+    <link rel="stylesheet" href="{{URL::asset('master')}}/css/style.css">
 
-    <link rel="stylesheet" href="{{url('public/admin_lte3')}}/plugins/toastr/toastr.css">
+    <link rel="stylesheet" href="{{URL::asset('admin_lte3')}}/plugins/toastr/toastr.css">
 
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="{{url('public/master')}}/css/responsive.css">
+    <link rel="stylesheet" href="{{URL::asset('master')}}/css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{url('public/master')}}/css/custom.css">
+    <link rel="stylesheet" href="{{URL::asset('master')}}/css/custom.css">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                        @if(auth()->guard('cus')->check())
+                            @if(auth()->guard('cus')->check())
                             <li><a href="{{route('customer.profile')}}"><i class="fa fa-user-shield s_color"></i> {{auth()->guard('cus')->user()->name}}</a></li>
                             <li><a href="{{route('customer.logout')}}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                             <li><a href="{{route('order.history')}}"><i class="fas fa-cart-arrow-down"></i> My Ordered</a></li>
@@ -65,6 +65,7 @@
                             <li><a href="{{route('customer.login')}}"><i class="fa fa-sign-in-alt "></i> Login</a></li>
                             <li><a href="{{route('customer.register')}}"><i class="fas fa-registered"></i> Register</a></li>
                         @endif
+                      
                         </ul>
                     </div>
                 </div>
@@ -73,10 +74,8 @@
 						<select id="basic"  class="selectpicker form-control">
 							<option  value="Register"> <a href="{{route('customer.register')}}" ><i class="fa fa-registered" aria-hidden="true">Register Here</i></a> </option>
 							<option  value="Login"><a href="{{route('customer.login')}}"><i class="fa fa-user" aria-hidden="true">Login</i></a> </option>
-                               
+                            
 						</select>
-                        
-                        
                         
 					</div>
                     <div class="text-slid-box">
@@ -125,27 +124,27 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="http://localhost:88/lrx_demo/"><img src="{{url('public/master')}}/images/logo.png" class="logo" alt=""></a>
+                    <a class="navbar-brand" href=""><img src="{{URL::asset('master')}}/images/logo.png" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="http://localhost:88/lrx_demo">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about">About Us</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{route('client.home')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('client.about')}}">About Us</a></li>
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
 								<li><a href="{{route('client.shop')}}">Sidebar Shop</a></li>
                                 <li><a href="{{route('cart.view')}}">Cart</a></li>
                                 <li><a href="{{route('order.checkout')}}">Checkout</a></li>
-                                <li><a href="my-account">My Account</a></li>
+                                <li><a href="{{route('customer.profile')}}">My Account</a></li>
                                 <li><a href="wishlist">Wishlist</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('client.gallery')}}">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('client.contact')}}">Contact Us</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -157,7 +156,7 @@
                         <li class="side-menu">
 							<a href="#">
 								<i class="fa fa-shopping-bag"></i>
-								<span class="badge">{{$cart->totalQuantity}}</span>
+								<span class="badge">{{$cart->totalItem}}</span>
 								<p>My Cart</p>
 							</a>
 						</li>
@@ -172,7 +171,7 @@
                     <ul class="cart-list">
                     @foreach($cart->items as  $carts) 
                         <li>
-                            <a href="#" class="photo"><img src="{{url('public/uploads')}}/{{$carts['image']}}" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{{URL::asset('uploads')}}/{{$carts['image']}}" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">{{$carts['name']}} </a></h6>
                             <p>{{$carts['quantity']}} <span class="price ml-5"> $ {{number_format($carts['price'])}}</span></p>
                         </li>
@@ -301,32 +300,32 @@
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
-    <script src="{{url('public/master')}}/js/jquery-3.2.1.min.js"></script>
-    <script src="{{url('public/master')}}/js/popper.min.js"></script>
-    <script src="{{url('public/master')}}/js/bootstrap.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/jquery-3.2.1.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/popper.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
-    <script src="{{url('public/master')}}/js/jquery.superslides.min.js"></script>
-    <script src="{{url('public/master')}}/js/bootstrap-select.js"></script>
-    <script src="{{url('public/master')}}/js/inewsticker.js"></script>
-    <script src="{{url('public/master')}}/js/bootsnav.js."></script>
-    <script src="{{url('public/master')}}/js/images-loded.min.js"></script>
-    <script src="{{url('public/master')}}/js/isotope.min.js"></script>
-    <script src="{{url('public/master')}}/js/owl.carousel.min.js"></script>
-    <script src="{{url('public/master')}}/js/baguetteBox.min.js"></script>
-    <script src="{{url('public/master')}}/js/form-validator.min.js"></script>
-    <script src="{{url('public/master')}}/js/contact-form-script.js"></script>
-    <script src="{{url('public/master')}}/js/custom.js"></script>
-    <script src="{{url('public/admin_lte3')}}/plugins/toastr/toastr.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/jquery.superslides.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/bootstrap-select.js"></script>
+    <script src="{{URL::asset('master')}}/js/inewsticker.js"></script>
+    <script src="{{URL::asset('master')}}/js/bootsnav.js."></script>
+    <script src="{{URL::asset('master')}}/js/images-loded.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/isotope.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/owl.carousel.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/baguetteBox.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/form-validator.min.js"></script>
+    <script src="{{URL::asset('master')}}/js/contact-form-script.js"></script>
+    <script src="{{URL::asset('master')}}/js/custom.js"></script>
+    <script src="{{URL::asset('admin_lte3')}}/plugins/toastr/toastr.min.js"></script>
 
 @if(Session::has('yes'))
   <script >
-    toastr.success('{{Session::get('yes')}}', 'Your Request Is Success ', {timeOut: 3000})
+    toastr.success('{{Session::get('yes')}}', 'Your request Successful ', {timeOut: 3000})
   </script>
 @endif
 
 @if(Session::has('no'))
   <script >
-    toastr.erro('{{Session::get('no')}}', 'Your Request Is Failed ', {timeOut: 3000})
+    toastr.error('{{Session::get('no')}}', 'Your request Failed ', {timeOut: 3000})
   </script>
 @endif
 

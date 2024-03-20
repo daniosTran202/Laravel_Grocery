@@ -4,7 +4,6 @@
 <div class="cart-box-main">
     <div class="container">
         <div class="row">
-
             <div class="col-lg-12 col-md-6">
                 <h1 class="text-center">Order Information</h1>
                 <table class="table table-bordered table-hover">
@@ -19,7 +18,7 @@
                         </tr>
                         <tr>
                             <th>Total Price</th>
-                            <td> $ {{number_format($order->total_price)}}</td>
+                            <td> ${{number_format($order->total_price,2)}}</td>
                         </tr>
                         <tr> 
                             <th>Status</th>
@@ -28,28 +27,29 @@
                                 @csrf
 
                                 @if($order->status == 0)
-                                    <a class="btn btn-primary">Chờ Xác Nhận</a>
+                                    <a class="btn btn-warning">Pending</a>
                                 @elseif($order->status == 1)
-                                    <a class="btn btn-warning">Đã Xác Nhận</a>
+                                    <a class="btn btn-primary">Confirmed</a>
                                 @elseif($order->status == 2)
-                                    <a class="btn btn-danger">Đang Giao Hàng</a>
+                                    <a class="btn btn-infor">Delivering</a>
                                 @elseif($order->status == 3)
-                                    <a class="btn btn-success">Đã Giao Hàng</a>
+                                    <a class="btn btn-success">Delivered</a>
                                 @else
-                                    <a class="btn btn-danger">Đã Hủy</a>
+                                    <a class="btn btn-danger">Canceled</a>
                                 @endif
 
                                 @if($order->status != 3)
                                   <div class=" ml-2 form-group">
                                     <select class="form-control" name="status" required="required">
-                                      <option value="">Chọn Trạng Thái</option>
-                                      <option value="2">Đang Giao Hàng</option>
-                                      <option value="3">Đã Giao Hàng</option>
-                                      <option value="4">Đã Hủy</option>
+                                      <option value="">Choose status</option>
+                                      <option value="1">Confirmed</option>
+                                      <option value="2">Delivering</option>
+                                      <option value="3">Delivered</option>
+                                      <option value="4">Canceled</option>
                                     </select>
                                   </div>
 
-                                <button type="submit" class="btn btn-primary ml-1">Cập Nhật</button>
+                                <button type="submit" class="btn btn-primary ml-1">Update</button>
                                 </form>
                                 @endif
                             </td>
@@ -126,9 +126,9 @@
                             <tr>
                                 <th>{{$item->prod->id}}</th>
                                 <th>{{$item->prod->name}}</th>
-                                <th>{{$item->price}}</th>
+                                <th>${{number_format($item->price,2)}}</th>
                                 <th>{{$item->quantity}}</th>
-                                <th>{{number_format($item->price * $item->quantity)}}</th>
+                                <th>${{number_format($item->price * $item->quantity,2)}}</th>
                             </tr>
                             @endforeach
                         </tbody>

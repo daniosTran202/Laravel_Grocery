@@ -17,12 +17,17 @@ class CustomerController extends Controller
 
     public function check_login(Request $req)
     {
+
+        request()->validate([
+            'email' => 'required|email|exists:customer',
+            'password' => 'required'
+        ]);
         $data = $req->only('email', 'password');
         $check_login = Auth::guard('cus')->attempt($data , $req -> has('remember'));
         if($check_login){
-            return redirect()->route('client.home')->with('yes','Đăng nhập thành công');
+            return redirect()->route('client.home')->with('yes','Success login !');
         }else{
-            return redirect()->back()->with('no','Email hoặc mật khẩu không chính xác !');
+            return redirect()->back()->with('no','Email or Password is invalid !');
         }
     }
 
@@ -33,16 +38,34 @@ class CustomerController extends Controller
 
     public function add_customer(Request $req)
     {
-        $req->validate([
-            'password' => 'required ',
-            'confirm_password' => 'required:same:password ',
-        ]);
+
+         $rules= [
+            'name' => 'required',
+            'email' => 'required|email|unique:customer',
+            'address' => 'required',
+            'phone' => 'required|numeric|unique:customer',
+            'password' => 'required',
+            'confirm_password' => 'required:same:password',
+        ];
+        $messages = [
+            
+            'name.required' => 'Password required !',
+            'email.required' => 'Password required !',
+            'email.unique' => 'Already email, try again !',
+            'address.required' => 'Password required !',
+            'phone.required' => 'Password required !',
+            'phone.numeric' => 'Password must be a number!',
+            'password.required' => 'Password required !',
+            'confirm_password.required:same:password' => 'Password not match !',
+
+        ];
+        $req->validate($rules,$messages);
 
         $pass_hashed = bcrypt($req->password);
         $req->merge(['password' => $pass_hashed]);
         $data = $req->only('email','name','password','phone','address','gender'); 
         if(Customer::create($data)){
-            return redirect()->route('customer.login');
+            return redirect()->route('customer.login')->with('yes','Register successfully . You can login now !');
         }else{
             return redirect()->back();
         }
@@ -51,7 +74,7 @@ class CustomerController extends Controller
     public function logout(Request $req)
     {
         Auth::guard('cus')->logout();
-        return redirect()->route('customer.login');
+        return redirect()->route('customer.login')->with('no', 'You have been logged out !');
     }
 
     public function forgot_password(Cart $cart)
@@ -68,11 +91,11 @@ class CustomerController extends Controller
             $password = $req->passwordNew;
             $email = $req->email;
             Mail::send('customer.password',compact('password', 'email'), function($mail) use($req){
-                $mail->to($req->email)->subject('Thay đổi mật khẩu thành công');
+                $mail->to($req->email)->subject('Password changed !');
             });
-            return redirect()->route('customer.login')->with('yes', 'Mật khẩu của bạn đã được gửi tới Gmail của bạn');
+            return redirect()->route('customer.login')->with('yes', 'Password have sent to your email . Check it !');
         }
-        return view('customer.forgot_password')->with('yes', 'Mật khẩu của bạn đã được gửi tới Gmail của bạn');
+        return view('customer.forgot_password')->with('yes', 'Password have sent to your email . Check it !');
     }
 
     public function profile(Request $req , Cart $cart)
@@ -100,9 +123,9 @@ class CustomerController extends Controller
         $data = $req->only('email','name','password','phone','address','gender'); 
 
         if($prof->update($data)){
-            return redirect()->route('client.home')->with('yes', 'Thông tin của bạn đã được thay đổi thành công');
+            return redirect()->route('client.home')->with('yes', 'Profile Updated !');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('no', 'Profile was not update');
         }
     }
 

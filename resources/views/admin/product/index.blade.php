@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title',' List Product Management')
+@section('title',' Product Management')
 @section('main')
 
  <div class="container">
@@ -8,7 +8,7 @@
              <label for=""></label>
              <input type="text" name="keyword" id="" class="form-control" placeholder=" Enter Keyword" aria-describedby="helpId">
              <button type="submit" class="btn btn-success ml-1"> <i class="fa fa-search" aria-hidden="true"></i></button>
-             <td><a href="product/create" class="btn btn-primary ml-2"><i class="fa fa-plus" aria-hidden="true"> </i> ADD</a></td>
+             <td><a href="product/create" class="btn btn-primary ml-2"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
          </div>
 
      </form>
@@ -20,9 +20,9 @@
                    <th>ID</th>
                    <th>Name</th>
                    <th>Image</th>
-                   <th>Price/SalePrice</th>
-                   <th>Price</th>
-                   <th>Cat_id</th>
+                   <th>Original Price</th>
+                   <th>New Price</th>
+                   <th>Category</th>
                    <th>Status</th>
                    <th>Created_at</th>
                    <th>Updated_at</th>
@@ -34,11 +34,11 @@
            <tbody>
             @foreach($pros as $pro)
             <tr>
-                <td>{{$pro->id}}</td>
+                <td>#{{$pro->id}}</td>
                 <td>{{$pro->name}}</td>
-                <td>  <img src="{{url('public/uploads')}}/{{$pro->image}}"  width="80"></td>
-                <td> {{$pro->price}}</td>
-                <td><span class="badge badge-primary">{{$pro->price}} </span> /{{$pro->sale_price}} </td>
+                <td>  <img src="{{URL::asset('uploads')}}/{{$pro->image}}"  width="100" height="100px" style="object-fit: cover"></td>
+                <td><span class="badge badge-danger">${{ number_format($pro->price, 2) }} </span></td>
+                <td><span class="badge badge-primary">${{ number_format($pro->sale_price, 2) }} </span></td>
                 <td>
                 @foreach($cats as $cat)
                     <span class="badge badge-success"> {{$cat->id == $pro->category_id ? $cat->name :'' }}</span>

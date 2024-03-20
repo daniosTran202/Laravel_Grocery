@@ -39,16 +39,16 @@
                             <?php $sub_total = $carts['price']*$carts['quantity']; ?>
                                 <tr>
                                     <td>{{$key}}</td>
-                                    <td><img src="{{url('public/uploads')}}/{{$carts['image']}}" width="80px" height="100px"></td>
+                                    <td><img src="{{URL::asset('uploads')}}/{{$carts['image']}}" width="80%" height="120px" style="object-fit: cover"></td>
                                     <td>{{$carts['name']}}</td>
-                                    <td>{{number_format($carts['price'])}}</td>
+                                    <td>${{ number_format($carts['price'], 2) }}</td>
                                     <td>
                                         <form action="{{route('cart.update', $carts['id'])}}">
-                                            <input class="text-center" style="width:50px" name="quantity" value="{{$carts['quantity']}}" >
-                                            <button class="btn btn-success btn-sm mb-1">Update</button>
+                                            <input class="text-center" type="number" style="width:50px;border: 1px solid #b0b435;border-radius:2px;" name="quantity" value="{{$carts['quantity']}}" >
+                                            <button class="btn btn-sm mb-1" style="background: #b0b435;color: white; border:none;"><i class="fas fa-save"></i></button>
                                         </form>
                                     </td>
-                                    <td>{{number_format($sub_total)}}</td>
+                                    <td>${{ number_format($sub_total,2) }}</td>
                                     <td><a href="{{route('cart.remove', $carts['id'])}}" onclick="return confirm('Do You Want To Delete This Item In Cart ?')" ><i class="fa fa-times-circle fa-2x text-danger "  aria-hidden="true"></i></i> </a></td>
                                 </tr>
                             <?php $key++; ?>
@@ -85,7 +85,7 @@
                         <h3>Order summary</h3>
                         <div class="d-flex">
                             <h4>Sub Total</h4>
-                            <div class="ml-auto font-weight-bold"> $ 130 </div>
+                            <div class="ml-auto font-weight-bold"> $ 130.00 </div>
                         </div>
                         <div class="d-flex">
                             <h4>Sub Quantity</h4>
@@ -93,16 +93,16 @@
                         </div>
                         <div class="d-flex">
                             <h4>Discount</h4>
-                            <div class="ml-auto font-weight-bold"> $ 40 </div>
+                            <div class="ml-auto font-weight-bold"> $ 40.00 </div>
                         </div>
                         <hr class="my-1">
                         <div class="d-flex">
                             <h4>Coupon Discount</h4>
-                            <div class="ml-auto font-weight-bold"> $ 10 </div>
+                            <div class="ml-auto font-weight-bold"> $ 10.00 </div>
                         </div>
                         <div class="d-flex">
                             <h4>Tax</h4>
-                            <div class="ml-auto font-weight-bold"> $ 2 </div>
+                            <div class="ml-auto font-weight-bold"> $ 2.00 </div>
                         </div>
                         <div class="d-flex">
                             <h4>Shipping Cost</h4>
@@ -111,7 +111,7 @@
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> $ {{number_format($cart->totalPrice)}}</div>
+                            <div class="ml-auto h5"> $ {{ number_format($cart->totalPrice,2) }}</div>
                         </div>
                         <hr> 
                     </div>
@@ -128,7 +128,7 @@
         <div class="main-instagram owl-carousel owl-theme">
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-01.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-01.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -136,7 +136,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-02.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-02.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -144,7 +144,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-03.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-03.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -152,7 +152,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-04.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-04.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -160,7 +160,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -168,7 +168,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-06.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-06.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -176,7 +176,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-07.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-07.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -184,7 +184,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-08.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-08.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -192,7 +192,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-09.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-09.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -200,7 +200,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>

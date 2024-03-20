@@ -75,7 +75,7 @@
                                                         <p class="sale">Sale</p>
                                                     </div>
                                                    
-                                                        <img src="{{url('public/uploads')}}/{{$pro->image}}" height="200px" width="100%" alt="Image">
+                                                        <img src="{{URL::asset('uploads')}}/{{$pro->image}}" height="200px" width="100%" alt="Image">
                                                  
                                                     <div class="mask-icon">
                                                         <ul>
@@ -89,7 +89,7 @@
                                                 <a href="{{route('client.shop_detail', ['id' => $pro->id,'slug' => Str::slug($pro->name)])}}">
                                                     <div class="why-text">
                                                         <h4>{{$pro->name}}</h4>
-                                                        <h5> ${{number_format($pro->price)}}</h5>
+                                                        <h5> ${{ number_format($pro->price,2) }}</h5>
                                                     </div>
                                                 </a>
                                             </div>
@@ -106,7 +106,7 @@
                                                         <div class="type-lb">
                                                             <p class="new">New</p>
                                                         </div>
-                                                        <img src="{{url('public/master')}}/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                                                        <img src="{{URL::asset('master')}}/images/img-pro-01.jpg" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -138,7 +138,7 @@
                                                         <div class="type-lb">
                                                             <p class="sale">Sale</p>
                                                         </div>
-                                                        <img src="{{url('public/master')}}/images/img-pro-02.jpg" class="img-fluid" alt="Image">
+                                                        <img src="{{URL::asset('master')}}/images/img-pro-02.jpg" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -170,7 +170,7 @@
                                                         <div class="type-lb">
                                                             <p class="sale">Sale</p>
                                                         </div>
-                                                        <img src="{{url('public/master')}}/images/img-pro-03.jpg" class="img-fluid" alt="Image">
+                                                        <img src="{{URL::asset('master')}}/images/img-pro-03.jpg" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -198,7 +198,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="paginate mb-2" style="margin: 0 50% auto;">
+                    <div class="paginate mb-2" style="margin: 0 50% auto;" >
                         {{$pros->links()}}
                     </div>
                 </div>
@@ -247,7 +247,7 @@
         <div class="main-instagram owl-carousel owl-theme">
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-01.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-01.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -255,7 +255,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-02.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-02.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -263,7 +263,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-03.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-03.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -271,7 +271,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-04.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-04.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -279,7 +279,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -287,7 +287,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-06.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-06.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -295,7 +295,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-07.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-07.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -303,7 +303,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-08.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-08.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -311,7 +311,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-09.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-09.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -319,7 +319,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>

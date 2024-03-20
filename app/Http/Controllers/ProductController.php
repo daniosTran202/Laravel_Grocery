@@ -15,7 +15,7 @@
             $cats = Category::orderBy('name','ASC')->select('id','name')->get();
             if($req->keyword){
                 $key = $req->keyword;
-                $pros = Product::where('name' ,'LIKE', '%'.$key.'%')->paginate(5);
+                $pros = Product::where('name' ,'LIKE', '%'.$key.'%')->paginate(4);
             }
             return view('admin.product.index', compact('pros','cats')); 
 
@@ -33,22 +33,22 @@
         public function store(Request $request){
             $rules= [
                 'name' => 'required|max:150|unique:products',
-                'price' => 'required|numeric|min:1000',
-                'sale_price' => 'required|numeric|min:0|lt:price',
+                'price' => 'required|numeric|min:10|max:100|',
+                'sale_price' => 'required|numeric|min:2|lt:price',
                 'description' => 'required|',
                 'category_id' =>'required',
                 'file_upload' => 'required| mimes:jpg,gif,png',
                 'status' => 'required '
             ];
             $messages = [
-                'name.required' => 'Tên sản phẩm không được để trống',
-                'name.unique' => 'Tên sản phẩm đã được sử dụng',
-                'name.max' => 'Tên sản phẩm không được quá 150 kí tự',
-                'price.required' => 'Giá sản phẩm không được để trống',
-                'description.required' => 'Mô tả sản phẩm không được để trống',
-                'price.numeric' => 'Giá sản phẩm phải là số',
-                'category_id.required' =>'Danh mục sản phẩm không được để trống',
-                'file_upload.mimes' =>'Ảnh sản phẩm phải có đuôi là jpg ,gif , png'
+                'name.required' => 'ProductName required',
+                'name.unique' => 'ProductName is unique',
+                'name.max' => 'ProductName do not over 150 characters',
+                'price.required' => 'Price required',
+                'description.required' => 'Description required',
+                'price.numeric' => 'Price must be a number',
+                'category_id.required' =>'CategoryId required',
+                'file_upload.mimes' =>'ProductFile Upload must be jpg,gif,png'
 
 
             ];
@@ -78,7 +78,7 @@
                         $file_ul-> move(public_path('uploads'),$file_name);
                     }
                 }
-                return redirect()->route('product.index')->with('yes','Add Product is Successful');
+                return redirect()->route('product.index')->with('yes','Add Product is Successfully');
             }else{
                 return redirect()->back()->with('no','Add Product is Failure');
             }
@@ -88,7 +88,7 @@
 
         public function delete($id){
             Product::where('id',$id)->delete(); // return true, false
-            return redirect()->route('product.index')->with('yes','Delete Product is Successfull '); // chuyển hướng về danh sách
+            return redirect()->route('product.index')->with('yes','SoftDelete Successfully '); // chuyển hướng về danh sách
         }
         
 
@@ -106,19 +106,19 @@
             $product = Product::find($id);
             $rules = [
                 'name' => 'required|max:150',
-                'price' => 'required|numeric|min:1000',
-                'sale_price' => 'required|numeric|min:0|lt:price',
+                'price' => 'required|numeric|min:5|max: 100',
+                'sale_price' => 'required|numeric|min:2|lt:price',
                 'description' => 'required|',
                 'category_id' =>'required',
                 'file_upload' => 'mimes:jpg,gif,png',
                 'status' => 'required '
             ];
             $messages = [
-                'name.required' => 'Tên sản phẩm không được để trống',
-                'name.max' => 'Tên sản phẩm không được quá 150 kí tự',
-                'price.required' => 'Giá sản phẩm không được để trống',
-                'price.required' => 'Mô tả sản phẩm không được để trống',
-                'file_upload.mimes' =>'Ảnh sản phẩm phải có đuôi là jpg ,gif , png'
+                'name.required' => 'ProductName required',
+                'name.max' => 'ProductName max 150 characters',
+                'price.required' => 'Price required',
+                'price.required' => 'Description required',
+                'file_upload.mimes' =>'File Upload must be jpg,gif,png'
             ];
             $request->validate($rules,$messages);
 
@@ -148,39 +148,39 @@
                     }
                 }
                
-                return redirect()->route('product.index')->with('yes','Update Product is Successful 😊' ); // chuyển hướng về danh sách
+                return redirect()->route('product.index')->with('yes','Update Product Successful !' ); // chuyển hướng về danh sách
             }else{
-                return redirect()->back()->with('no','Update Product is Failure');
+                return redirect()->back()->with('no','Update Product Failed !');
             }
             
         }
 
         public function trashed()
         {
+            $cats = Category::orderBy('name','ASC')->select('id','name')->get();
             $pros = Product::onlyTrashed()->paginate(3);
-            // dd($prods);
-            return view('admin.product.trash',compact('pros'));
+            return view('admin.product.trash',compact('pros','cats'));
         }
 
         public function restore($id)
         {
             $pro = Product::withTrashed()->find($id);
             $pro->restore();
-            return redirect()->back()->with('yes', 'Restore is Successfully 😊');
+            return redirect()->back()->with('yes', 'Restore Successfully !');
         }
 
         public function forcedelete($id)
         {
             $pro = Product::withTrashed()->find($id);
             $pro->forcedelete();
-            return redirect()->back()->with('yes', 'Delete Permanent is Successfully 😊');
+            return redirect()->back()->with('yes', 'Permanent delete Successfully !');
             
         }
 
         public function deleteImage($id) 
         {
             ProductImage::where('id', $id)->delete();
-            return redirect()->back()->with('yes', 'Delete is successfully');
+            return redirect()->back()->with('yes', 'Delete successfully');
         }
     }
 

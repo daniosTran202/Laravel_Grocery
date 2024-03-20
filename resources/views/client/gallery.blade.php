@@ -48,7 +48,7 @@
                             <div class="type-lb">
                                 <p class="sale">Sale</p>
                             </div>
-                            <img src="{{url('public/master')}}/images/gallery-img-01.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-01.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -64,7 +64,7 @@
                 <div class="col-lg-3 col-md-6 special-grid fruits">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="{{url('public/master')}}/images/gallery-img-02.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-02.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -79,7 +79,7 @@
                 <div class="col-lg-3 col-md-6 special-grid bulbs">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="{{url('public/master')}}/images/gallery-img-03.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-03.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -94,7 +94,7 @@
                 <div class="col-lg-3 col-md-6 special-grid fruits">
                     <div class="products-single fix">
                         <div class="box-img-hover">                            
-                            <img src="{{url('public/master')}}/images/gallery-img-04.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-04.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -108,7 +108,7 @@
 				<div class="col-lg-3 col-md-6 special-grid bulbs">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="{{url('public/master')}}/images/gallery-img-05.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-05.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -123,7 +123,7 @@
                 <div class="col-lg-3 col-md-6 special-grid fruits">
                     <div class="products-single fix">
                         <div class="box-img-hover">                            
-                            <img src="{{url('public/master')}}/images/gallery-img-06.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-06.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -138,7 +138,7 @@
                 <div class="col-lg-3 col-md-6 special-grid podded-vegetables">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="{{url('public/master')}}/images/gallery-img-07.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-07.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -153,7 +153,7 @@
                 <div class="col-lg-3 col-md-6 special-grid root-and-tuberous">
                     <div class="products-single fix">
                         <div class="box-img-hover">                            
-                            <img src="{{url('public/master')}}/images/gallery-img-08.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-08.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -168,7 +168,7 @@
 				<div class="col-lg-3 col-md-6 special-grid root-and-tuberous">
                     <div class="products-single fix">
                         <div class="box-img-hover">                            
-                            <img src="{{url('public/master')}}/images/gallery-img-09.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-09.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -183,7 +183,7 @@
                 <div class="col-lg-3 col-md-6 special-grid podded-vegetables">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="{{url('public/master')}}/images/gallery-img-10.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-10.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -198,7 +198,7 @@
                 <div class="col-lg-3 col-md-6 special-grid root-and-tuberous">
                     <div class="products-single fix">
                         <div class="box-img-hover">                           
-                            <img src="{{url('public/master')}}/images/gallery-img-11.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-11.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -213,7 +213,7 @@
                 <div class="col-lg-3 col-md-6 special-grid podded-vegetables">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="{{url('public/master')}}/images/gallery-img-12.jpg" class="img-fluid" alt="Image">
+                            <img src="{{URL::asset('master')}}/images/gallery-img-12.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -234,7 +234,7 @@
         <div class="main-instagram owl-carousel owl-theme">
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-01.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-01.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -242,7 +242,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-02.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-02.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -250,7 +250,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-03.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-03.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -258,7 +258,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-04.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-04.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -266,7 +266,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -274,7 +274,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-06.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-06.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -282,7 +282,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-07.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-07.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -290,7 +290,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-08.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-08.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -298,7 +298,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-09.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-09.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -306,7 +306,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>

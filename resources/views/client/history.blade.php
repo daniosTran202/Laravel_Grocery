@@ -24,7 +24,7 @@
                                     <td>{{$order->name}}</td>
                                     <td>{{$order->created_at->format('d-m-y')}}</td>
                                     <td>{{number_format($order->total_price)}}</td>
-                                    <td>{{$order->status == 0 ? 'Pedding...' :'Accepted' }}</td>
+                                    <td>{{$order->status == 0 ? 'Pending...' :'Accepted' }}</td>
                                     <td class="text-right">
                                         <a href="{{route('order.detail', $order->id)}}" class="btn btn-success">Detail</a>
                                         <a href="{{route('order.pdf', $order->id)}}" target="_blank"  class="btn btn-primary">PDF</a>

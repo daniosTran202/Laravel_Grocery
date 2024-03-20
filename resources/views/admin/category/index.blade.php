@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Category List')
+@section('title','Categories Management')
 @section('main')
 
 
@@ -10,7 +10,7 @@
              <label for=""></label>
              <input type="text" name="keyword" id="" class="form-control" placeholder=" Enter Keyword" aria-describedby="helpId">
              <button type="submit" class="btn btn-success ml-1"> <i class="fa fa-search" aria-hidden="true"></i></button>
-             <td><a href="category/create" class="btn btn-primary ml-2"><i class="fa fa-plus" aria-hidden="true"> </i> Create</a></td>
+             <td><a href="category/create" class="btn btn-primary ml-2"><i class="fa fa-plus" aria-hidden="true"> </i></a></td>
          </div>
 
 </form>
@@ -33,13 +33,13 @@
            <tbody>
             @foreach($cats as $cat)
             <tr>
-                <td>{{$cat->id}}</td>
+                <td>#{{$cat->id}}</td>
                 <td>{{$cat->name}}</td>
                 <td>
                     @if($cat->status == 0)
-                        <span class="badge badge-danger">Private</span>
+                        <span class="badge badge-danger">Hidden</span>
                     @else
-                        <span class="badge badge-success">Public</span>
+                        <span class="badge badge-success">Publish</span>
                     @endif
                 </td>
                 <td>{{$cat->prods->count()}}</td>

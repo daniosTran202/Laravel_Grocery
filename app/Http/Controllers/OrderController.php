@@ -29,6 +29,25 @@ class OrderController extends Controller
     public function post_checkout(Request $req ,Cart $cart)
 
     {
+
+        $rules= [
+            'name' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
+            'phone' => 'required|numeric'
+        ];
+        $messages = [
+            
+            'name.required' => 'Password required !',
+            'email.required' => 'Password required !',
+            'email.unique' => 'Already email, try again !',
+            'email.email'=> 'Formatted email !',
+            'address.required' => 'Password required !',
+            'phone.required' => 'Password required !',
+            'phone.numeric' => 'Password must be a number!'
+
+        ];
+        $req->validate($rules,$messages);
         $check = true;
         $auth = Auth::guard('cus')->user();
         $data = $req->only('customer_id','name', 'email', 'address', 'phone', 'total_price','status');

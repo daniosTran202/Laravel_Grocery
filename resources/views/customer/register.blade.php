@@ -32,18 +32,22 @@
                                     <label for="">Name</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" >
                                     </div>
+                                    @error('name') <small style="color: red">{{ $message }}</small> @enderror
+
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                     <label for="">Email</label>
                                         <input type="text" placeholder="Your Email" id="email" class="form-control" name="email" >
+                                        @error('email') <small style="color: red">{{ $message }}</small> @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                     <label for="">Address</label>
                                         <input type="text" class="form-control" id="subject" name="address" placeholder=" Your Address">
-                                      
+                                        @error('address') <small style="color: red">{{ $message }}</small> @enderror
+
                                     </div>
                                 </div>
                             </div>
@@ -54,6 +58,8 @@
                                     <div class="form-group">
                                     <label for="">Phone</label>
                                         <input type="text" placeholder="Your Phone" id="phone" class="form-control" name="phone" >
+                                        @error('phone') <small style="color: red">{{ $message }}</small> @enderror
+
                                     </div>
                                 </div>
 
@@ -61,10 +67,15 @@
                                     <div class="form-group">
                                     <label for="">Password</label>
                                         <input type="password" placeholder="Your Password" id="phone" class="form-control" name="password">
+                                                  @error('password') <small style="color: red">{{ $message }}</small> @enderror
+
                                     </div>
+
                                     <div class="form-group mt-2">
                                     <label for="">Confirm Password</label>
                                         <input type="password" placeholder="Your Confirm Password" id="phone" class="form-control" name="confirm_password">
+                                        @error('confirm_password') <small style="color: red">{{ $message }}</small> @enderror
+
                                     </div>
                                 </div>
 
@@ -79,9 +90,10 @@
                                             </label>
                                     </div>
                                 </div>
+                                <div style="text-align: right">Already account ? <b><a href="{{ route('customer.login') }}" style="text-decoration: none">Login</a></b></div>
                               
                                    <div class=" text-center mt-5">
-                                        <button class="btn "  style="background-color:#b0b435;" type="submit">Register</button>
+                                        <button class="btn"  style="background-color:#b0b435;" type="submit">Register</button>
                                     </div>
               
                                 

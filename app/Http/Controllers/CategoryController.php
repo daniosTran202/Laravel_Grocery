@@ -28,10 +28,10 @@
                 'status' => 'required|'
             ];
             $messages = [
-                'name.required' => 'Tên danh mục không được để trống',
-                'name.max' => 'Tên danh mục không được  quá 30 ký tự',
-                'name.unique' => 'Tên danh mục đã được sử dụng',
-                'status.required' => 'Vui lòng chọn trạng thái danh mục'
+                'name.required' => 'CategoryName required',
+                'name.max' => 'CategoryName max 30 characters',
+                'name.unique' => 'CategoryName already exists',
+                'status.required' => 'Please Choose Category Status'
 
             ];
             $request->validate($rules,$messages);
@@ -39,9 +39,9 @@
             // $request->all() lấy dữ liệu từ form giống với $_POST
             //Category::create(); // như lệnh INSERT INTO category
             if( Category::create($request->all())){
-                return redirect()->route('category.index')->with('yes', 'Add Is Success  😊'); 
+                return redirect()->route('category.index')->with('yes', 'Create Successfuly!'); 
             }else{
-                return redirect()->back()->with('no', 'Add Is Failed😥');
+                return redirect()->back()->with('no', 'Add Failed !');
             }
             
           // chuyển hướng về danh sách
@@ -50,9 +50,9 @@
         public function delete($id){
             $cat = Category::find($id);
             if($cat->prods->count() == 0 && $cat->delete()){
-                return redirect()->route('category.index')->with('yes', 'Delete successful , move into trash  😊');
+                return redirect()->route('category.index')->with('yes', 'SoftDelete successfully , move into trash.');
             }else{
-                return redirect()->back()->with('no', 'Delete is failed 😥');
+                return redirect()->back()->with('no', 'Delete failed !');
             }
             // return true, false
              // chuyển hướng về danh sách
@@ -73,9 +73,9 @@
             // return redirect()->route('category.index'); // chuyển hướng về danh sách
             $cat = Category::find($id); 
             if(Category::catUpdate($id)){
-                return redirect()->route('category.index')->with('yes', 'Update is Success 😊'); // chuyển hướng về danh sách
+                return redirect()->route('category.index')->with('yes', 'Update Successfully !'); // chuyển hướng về danh sách
             }else{
-                return redirect()->back()->with('no', 'Update is Failed  😥');
+                return redirect()->back()->with('no', 'Update Failed !');
             }
         }
 
@@ -89,14 +89,14 @@
         {
             $cat = Category::withTrashed()->find($id);
             $cat->restore();
-            return redirect()->back()->with('yes', 'Restore is Successfully 😊');
+            return redirect()->back()->with('yes', 'Restore Successfully !');
         }
 
         public function forcedelete($id)
         {
             $cat = Category::withTrashed()->find($id);
             $cat->forcedelete();
-            return redirect()->back()->with('yes', 'Delete Permanent is Successfully 😊');
+            return redirect()->back()->with('yes', 'Permanent delete Successfully !');
             
         }
 

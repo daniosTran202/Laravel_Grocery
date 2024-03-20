@@ -33,7 +33,7 @@
            <tbody>
             @foreach($cats as $cat)
             <tr>
-                <td>{{$cat->id}}</td>
+                <td>${{$cat->id}}</td>
                 <td>{{$cat->name}}</td>
                 <td>
                     @if($cat->status == 0)

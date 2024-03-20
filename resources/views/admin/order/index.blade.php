@@ -1,21 +1,21 @@
 @extends('layouts.admin')
-@section('title','Quản lí đơn hàng')
+@section('title','Orders Management')
 @section('main')
 
 <div class="container-fuild">
 <div class="row">
     <div class="col-md-5">
-    <a href="?status=0" class="btn btn-sm btn-outline-success"><i class="fa fa-redo-alt" aria-hidden="true"></i></a>
+    <a href="?status=0" class="btn btn-sm btn-outline-success mr-1"><i class="fa fa-redo-alt" aria-hidden="true"></i></a>
     @if($start && $end)
-        <a href="?status=0&dateStart={{$start}}&dateEnd={{$end}}" class="btn btn-sm btn-primary">Chờ Xác Nhận</a>
-        <a href="?status=1&dateStart={{$start}}&dateEnd={{$end}}" class="btn btn-sm btn-warning">Đã Xác Nhận</a>
-        <a href="?status=2&dateStart={{$start}}&dateEnd={{$end}}" class="btn btn-sm btn-danger">Đang Giao Hàng</a>
-        <a href="?status=3&dateStart={{$start}}&dateEnd={{$end}}" class="btn btn-sm btn-success">Đã Nhận Hàng</a>
+        <a href="?status=0&dateStart={{$start}}&dateEnd={{$end}}" class="btn btn-sm btn-warning mr-1">Pending</a>
+        <a href="?status=1&dateStart={{$start}}&dateEnd={{$end}}" class="btn btn-sm btn-primary mr-1">Confirmed</a>
+        <a href="?status=2&dateStart={{$start}}&dateEnd={{$end}}" class="btn btn-sm btn-info mr-1">Delivering</a>
+        <a href="?status=3&dateStart={{$start}}&dateEnd={{$end}}" class="btn btn-sm btn-success mr-1">Delivered</a>
     @else
-        <a href="?status=0" class="btn btn-sm btn-primary">Chờ Xác Nhận</a>
-        <a href="?status=1" class="btn btn-sm btn-warning">Đã Xác Nhận</a>
-        <a href="?status=2" class="btn btn-sm btn-danger">Đang Giao Hàng</a>
-        <a href="?status=3" class="btn btn-sm btn-success">Đã Nhận Hàng</a>
+        <a href="?status=0" class="btn btn-sm btn-warning mr-1">Pending</a>
+        <a href="?status=1" class="btn btn-sm btn-primary mr-1">Confirmed</a>
+        <a href="?status=2" class="btn btn-sm btn-info mr-1">Delivering</a>
+        <a href="?status=3" class="btn btn-sm btn-success mr-1">Delivered</a>
     @endif
     </div>
 
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-            <button type="submit" class="btn btn-primary ml-2">Submit</button>
+            <button type="submit" class="btn btn-primary ml-2"><i class="fas fa-search"></i></button>
         </form>
     </div>
     </div>
@@ -63,16 +63,16 @@
     <tbody>
         @foreach($orders as $order)
         <tr>
-            <td>{{$order->id}}</td>
+            <td>#{{$order->id}}</td>
             <td>{{$order->created_at->format('d-m-Y')}}</td>
-            <td>{{number_format($order->total_price)}}</td>
-            <td>{{$order->status == 0 ? 'Pedding...' :'Accepted' }}</td>
+            <td>${{number_format($order->total_price,2)}}</td>
+            <td>{{$order->status == 0 ? 'Pending...' :'Accepted' }}</td>
             <td>{{$order->cus->name}}</td>
             <td>{{$order->cus->phone}}</td>
             <td class="text-right">
                 <a href="{{route('admin.order.detail', $order->id)}}" class="btn btn-success">Detail</a>
-                <a href="" target="_blank" class="btn btn-primary">PDF</a>
-                <a href="" target="_blank" class="btn btn-danger">Dowload PDF</a>
+                <a href="{{route('order.pdf', $order->id)}}" target="_blank" class="btn btn-primary">PDF</a>
+                <a href="{{route('order.pdf', $order->id)}}?action=download" target="_blank" class="btn btn-danger">Dowload PDF</a>
             </td>
         </tr>
         @endforeach

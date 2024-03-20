@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <label for="">Product Name</label>
-            <input class="form-control" name="name" value="{{old('name')}}" placeholder=" Please Enter Category Name">
+            <input class="form-control" name="name" value="{{old('name')}}" placeholder=" Please Enter Product Name">
             @error('name')
                 <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -50,7 +50,7 @@
 
     <div class="col-md-3">
          <div class="form-group">
-            <label for="">Price</label>
+            <label for="">Original Price</label>
             <input class="form-control" name="price" value="{{old('price')}}" placeholder=" Please Enter Price">
             @error('price')
                 <div class="alert alert-danger">
@@ -61,7 +61,7 @@
         </div>
 
          <div class="form-group">
-            <label for="">Sale_Price</label>
+            <label for="">New Price</label>
             <input class="form-control" name="sale_price" value="{{old('sale_price')}}" placeholder=" Please Enter Sale Price">
             @error('sale_price')
                 <div class="alert alert-danger">
@@ -72,9 +72,9 @@
         </div>
 
          <div class="form-group">
-            <label for="">Category_id</label>
+            <label for="">CategoryName</label>
            <select name="category_id" class="form-control" >
-               <option value="">--- Select One Category --</option>
+               <option value="">--- Select One Category ---</option>
                @foreach($cats as $cat)
                <option value="{{$cat->id}}" {{ old('category_id') == $cat->id ? 'selected' : ''  }}>{{$cat->name}}</option>
                @endforeach
@@ -126,11 +126,11 @@
 @stop()
 
 @section('css')
-<link rel="stylesheet" href="{{url('public/admin_lte3')}}/plugins/summernote/summernote-bs4.css">
+<link rel="stylesheet" href="{{URL::asset('admin_lte3')}}/plugins/summernote/summernote-bs4.css">
 @stop()
 
 @section('js')
-<script src="{{url('public/admin_lte3')}}/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="{{URL::asset('admin_lte3')}}/plugins/summernote/summernote-bs4.min.js"></script>
 <script>
   $(function () {
     // Summernote

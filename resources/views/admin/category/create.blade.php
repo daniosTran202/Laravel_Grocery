@@ -23,11 +23,11 @@
         <div class="radio">
             <label>
                 <input type="radio" name="status" value="1" >
-                Public
+                Publish
             </label>
             <label>
                 <input type="radio" name="status" value="0">
-                Private
+                Hidden
             </label>
             @error('status')
             <div class="alert alert-danger">
@@ -37,8 +37,7 @@
         @enderror
         </div>
     </div>
-    <a href="{{route('category.index')}}" class="btn btn-danger mr-3" style="opacity:65%;"><i
-                                            class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</a>
+    <a href="{{route('category.index')}}" class="btn btn-danger mr-3" style="opacity:65%;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</a>
     <button type="submit" class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"> Saved</i></button>
 </form>
     </div>

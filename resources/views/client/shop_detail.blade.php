@@ -23,9 +23,9 @@
                 <div class="col-xl-5 col-lg-5 col-md-6">
                     <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active"> <img class="d-block w-100" src="{{url('public/uploads')}}/{{$product->image}}" alt="{{$product->name}}"> </div>
-                            <div class="carousel-item"> <img class="d-block w-100" src="{{url('public/uploads')}}/{{$product->image}}" alt="Second slide"> </div>
-                            <div class="carousel-item"> <img class="d-block w-100" src="{{url('public/uploads')}}/{{$product->image}}" alt="Third slide"> </div>
+                            <div class="carousel-item active"> <img class="d-block w-100" src="{{URL::asset('uploads')}}/{{$product->image}}" alt="{{$product->name}}"> </div>
+                            <div class="carousel-item"> <img class="d-block w-100" src="{{URL::asset('uploads')}}/{{$product->image}}" alt="Second slide"> </div>
+                            <div class="carousel-item"> <img class="d-block w-100" src="{{URL::asset('uploads')}}/{{$product->image}}" alt="Third slide"> </div>
                         </div>
                         <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev"> 
 						<i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -38,7 +38,7 @@
                         <div class="row mt-3 ">
                         @foreach($product->images as $img)
                             <div class="col-md-3">
-                                <img src="{{url('public/uploads')}}/{{$img->name}}" alt="{{$product->name}}" class="img-responsive w-100 " height="120px" />
+                                <img src="{{URL::asset('uploads')}}/{{$img->name}}" alt="{{$product->name}}" class="img-responsive w-100 h-100"style="object-fit: cover" />
                             </div>
                         @endforeach
                             
@@ -50,10 +50,10 @@
                         <h2>{{$product->name}}</h2>
                         <h5> 
                             @if($product->sale_price)
-                                <del>Old Price :${{number_format($product->price)}}</del>
-                                <big>Price : ${{number_format($product->sale_price)}}</big>
+                                <del>Old Price :${{ number_format($product->price,2) }}</del>
+                                <big>Price : ${{ number_format($product->sale_price,2) }}</big>
                             @else
-                                Price : {{number_format($product->price)}}
+                                Price : {{ number_format($product->price,2) }}
                             @endif
                         </h5>
                         <p class="available-stock"><span> More than 20 available / <a href="#">8 sold </a></span><p>
@@ -93,42 +93,52 @@
             </div>
 			
 			<div class="row my-5">
-				<div class="card card-outline-secondary my-4">
+				<div class="card card-outline-secondary my-4 w-100">
 					<div class="card-header">
 						<h2>Product Reviews</h2>
 					</div>
 					<div class="card-body">
-						<div class="media mb-3">
+
+                        @if(auth('cus')->check())
+                        <form action="{{ route('client.comment',$product->id) }}" method="post" role="form">
+                            @csrf
+                            @error('comment') <small style="color: red"> {{ $message }}</small> @enderror 
+                            <div class="media">
+                                <div class="form-group w-100">
+                                    <textarea name="comment" class="form-control" id="" cols="150" rows="2" placeholder="Enter your comment"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn hvr-hover text-white float-right">Leave a Review</button>
+                        </form>
+                        @else
+                            <div
+                                class="alert alert-danger"
+                                role="alert"
+                            >
+                                <strong>To comment, You must login first! <a href="{{route('customer.login',$product->id)}}">Login here</a></strong> 
+                            </div>
+                        @endif
+
+
+                        @foreach($comments as $com)
+						<div class="media" style="margin-top: 4rem">
 							<div class="mr-2"> 
 								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
 							</div>
 							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
+								<p>{{$com->comment}}</p>
+								<small class="text-muted">Posted by <b>{{ $com->customer->name ?? 'Anonymous' }}</b> on {{ $com->created_at->format('d/m/Y') }}
+                                </small>
 							</div>
+
+
+                             {{-- @can('edit-comment',$com) --}}
+                                <a href="" class="btn btn-sm btn-primary mr-1" style="font-size:15px;padding:7px;font-weight:400">Edit</a>
+                                <a href="" class="btn btn-sm btn-danger" style="font-size:15px;padding:7px;font-weight:400">Delete</a>
+                            {{-- @endcan --}}
 						</div>
 						<hr>
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<a href="#" class="btn hvr-hover">Leave a Review</a>
+                        @endforeach
 					</div>
 				  </div>
 			</div>
@@ -143,7 +153,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{url('public/master')}}/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                                    <img src="{{URL::asset('master')}}/images/img-pro-01.jpg" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -162,7 +172,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{url('public/master')}}/images/img-pro-02.jpg" class="img-fluid" alt="Image">
+                                    <img src="{{URL::asset('master')}}/images/img-pro-02.jpg" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -181,7 +191,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{url('public/master')}}/images/img-pro-03.jpg" class="img-fluid" alt="Image">
+                                    <img src="{{URL::asset('master')}}/images/img-pro-03.jpg" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -200,7 +210,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{url('public/master')}}/images/img-pro-04.jpg" class="img-fluid" alt="Image">
+                                    <img src="{{URL::asset('master')}}/images/img-pro-04.jpg" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -219,7 +229,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{url('public/master')}}/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                                    <img src="{{URL::asset('master')}}/images/img-pro-01.jpg" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -238,7 +248,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{url('public/master')}}/images/img-pro-02.jpg" class="img-fluid" alt="Image">
+                                    <img src="{{URL::asset('master')}}/images/img-pro-02.jpg" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -257,7 +267,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{url('public/master')}}/images/img-pro-03.jpg" class="img-fluid" alt="Image">
+                                    <img src="{{URL::asset('master')}}/images/img-pro-03.jpg" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -276,7 +286,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{url('public/master')}}/images/img-pro-04.jpg" class="img-fluid" alt="Image">
+                                    <img src="{{URL::asset('master')}}/images/img-pro-04.jpg" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -305,7 +315,7 @@
         <div class="main-instagram owl-carousel owl-theme">
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-01.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-01.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -313,7 +323,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-02.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-02.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -321,7 +331,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-03.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-03.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -329,7 +339,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-04.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-04.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -337,7 +347,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -345,7 +355,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-06.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-06.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -353,7 +363,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-07.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-07.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -361,7 +371,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-08.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-08.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -369,7 +379,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-09.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-09.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -377,7 +387,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>

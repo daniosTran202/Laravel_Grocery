@@ -12,7 +12,7 @@ class CartController extends Controller
     {
         $product = Product::find($id);
         $cart->setItem($product);
-        return redirect()->route('cart.view');
+        return redirect()->route('client.shop');
     }
 
 
@@ -30,7 +30,7 @@ class CartController extends Controller
             $cart->updateItem($id,$quantity);
             return redirect()->route('cart.view');
         }else{
-            return redirect()->back()->with('yes','Quantity is bigger than 0');
+            return redirect()->back()->with('no','Quantity must be more than 0 !');
         }
         
     }

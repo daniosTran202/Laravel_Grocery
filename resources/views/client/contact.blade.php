@@ -85,7 +85,7 @@
         <div class="main-instagram owl-carousel owl-theme">
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-01.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-01.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -93,7 +93,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-02.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-02.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -101,7 +101,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-03.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-03.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -109,7 +109,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-04.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-04.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -117,7 +117,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -125,7 +125,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-06.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-06.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -133,7 +133,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-07.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-07.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -141,7 +141,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-08.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-08.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -149,7 +149,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-09.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-09.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -157,7 +157,7 @@
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="{{url('public/master')}}/images/instagram-img-05.jpg" alt="" />
+                    <img src="{{URL::asset('master')}}/images/instagram-img-05.jpg" alt="" />
                     <div class="hov-in">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>

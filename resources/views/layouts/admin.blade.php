@@ -9,18 +9,18 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{url('public/admin_lte3')}}/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{URL::asset('admin_lte3')}}/plugins/fontawesome-free/css/all.min.css">
 
-  <link rel="stylesheet" href="{{url('public/admin_lte3')}}/plugins/toastr/toastr.css">
+  <link rel="stylesheet" href="{{URL::asset('admin_lte3')}}/plugins/toastr/toastr.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{url('public/admin_lte3')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="{{URL::asset('admin_lte3')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{url('public/admin_lte3')}}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{URL::asset('admin_lte3')}}/dist/css/adminlte.min.css">
   @yield('css')
 </head>
 <style>
     .ad{
-        background-image: url("{{url('public/admin_lte3')}}/dist/img/bg_im.jpg") ;
+        background-image: url("{{URL::asset('admin_lte3')}}/dist/img/bg_im.jpg") ;
         background-position:1%;
         height:400px;
         width: 100%;
@@ -45,7 +45,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="http://localhost:88/lrx_demo/admin/" class="nav-link">Home</a>
+        <a href="" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -86,7 +86,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{url('public/admin_lte3')}}/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="{{URL::asset('admin_lte3')}}/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -102,7 +102,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{url('public/admin_lte3')}}/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="{{URL::asset('admin_lte3')}}/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -118,7 +118,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{url('public/admin_lte3')}}/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="{{URL::asset('admin_lte3')}}/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -180,7 +180,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="http://localhost:88/lrx_demo/admin" class="brand-link">
-      <img src="{{url('public/admin_lte3')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{URL::asset('admin_lte3')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin_Vegatables </span>
     </a>
 
@@ -189,7 +189,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{url('public/admin_lte3')}}/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{URL::asset('admin_lte3')}}/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"> Admin : {{Auth::user()->name}} </a>
@@ -238,31 +238,14 @@
               </li>
               <li class="nav-item">
                 <a href="{{route('category.create')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>New Add</p>
+                  <i class="fa fa-plus nav-icon" aria-hidden="true"> </i>
+                  <p>Create</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('category.trashed')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="fa fa-trash nav-icon" aria-hidden="true"></i>
                   <p>Trash</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Order Management
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('order.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Order List</p>
                 </a>
               </li>
             </ul>
@@ -285,14 +268,65 @@
               </li>
               <li class="nav-item">
                 <a href="{{route('product.create')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>New Add</p>
+                  <i class="fa fa-plus nav-icon" aria-hidden="true"> </i>
+                  <p>Create</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('product.trashed')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="fa fa-trash nav-icon" aria-hidden="true"></i>
                   <p>Trash</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book-reader"></i>
+              <p>
+                 Blog Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('blog.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Blog List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('blog.create')}}" class="nav-link">
+                 <i class="fa fa-plus nav-icon" aria-hidden="true"> </i>
+                  <p>Create</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('blog.trashed')}}" class="nav-link">
+                <i class="fa fa-trash nav-icon" aria-hidden="true"></i>          
+                <p>Trash</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Order Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('order.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order List</p>
                 </a>
               </li>
             </ul>
@@ -377,17 +411,17 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{url('public/admin_lte3')}}/plugins/jquery/jquery.min.js"></script>
+<script src="{{URL::asset('admin_lte3')}}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="{{url('public/admin_lte3')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{URL::asset('admin_lte3')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="{{url('public/admin_lte3')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{URL::asset('admin_lte3')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{url('public/admin_lte3')}}/dist/js/adminlte.min.js"></script>
+<script src="{{URL::asset('admin_lte3')}}/dist/js/adminlte.min.js"></script>
 
-<script src="{{url('public/admin_lte3')}}/plugins/toastr/toastr.min.js"></script>
+<script src="{{URL::asset('admin_lte3')}}/plugins/toastr/toastr.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{url('public/admin_lte3')}}/dist/js/demo.js"></script>
+<script src="{{URL::asset('admin_lte3')}}/dist/js/demo.js"></script>
 @if(Session::has('yes'))
   <script >
     toastr.success('{{Session::get('yes')}}', 'Your Request Is Success ', {timeOut: 3000})

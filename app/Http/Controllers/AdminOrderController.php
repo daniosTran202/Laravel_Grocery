@@ -36,6 +36,6 @@ class AdminOrderController extends Controller
         if($req->status){
             Order::where('id',$id)->update(['status' => $req->status]);
         }
-        return redirect()->back()->with('yes', 'Update is success');
+        return redirect()->back()->with('yes', 'Update successfully !');
     }
 }

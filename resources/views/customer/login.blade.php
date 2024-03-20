@@ -23,19 +23,22 @@
                     <div class="contact-form-right">
                         <h2 class="text-center mb-5"> FreshShop |  Login</h2>
 
-                        @if(Session::has('no'))
+                        {{-- @if(Session::has('no'))
                             <div class="alert alert-danger">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 {{Session::get('no')}}
                             </div>
-                        @endif
+                        @endif --}}
                         <form method="POST">
                         @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">Email</label>
-                                        <input type="email"  class="form-control" id="name" name="email" placeholder="Enter Email" required data-error="Please enter your name">
+                                        <input type="email"  class="form-control" id="name" name="email" placeholder="Enter Email" data-error="Please enter your name">
+
+                                        @error('email') <small style="color: red">{{ $message }}</small> @enderror
+
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -43,7 +46,9 @@
                                 <div class="col-md-12">
                                 <label for="">Password</label>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="subject" name="password" placeholder="Enter password" required data-error="Please enter your Subject">
+                                        <input type="password" class="form-control" id="subject" name="password" placeholder="Enter password" data-error="Please enter your Email">
+                                        @error('password') <small style="color: red">{{ $message }}</small> @enderror
+
                                         <div class="help-block with-errors"></div>
                                     </div>
 
@@ -58,11 +63,13 @@
                                 
 
                                 <div class="col-md-12 mt-2">
-                                    <div class="submit-button text-center">
+                                    <div class="submit-button" style="text-align: right">
+                                        <button class="btn hvr-hover" style="margin-right: 15px"><a href="{{route('customer.register')}}" style="color: #fff">Register</a></button>
                                         <button class="btn hvr-hover"  type="submit">Login</button>
                                         <div  class="h3 text-center hidden"></div>
                                         <div class="clearfix"></div>
                                     </div>
+                                   
                                 </div>
                             </div>
                         </form>

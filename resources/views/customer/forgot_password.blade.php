@@ -2,7 +2,7 @@
 @section('main')
 <div class="" style="width: 500px;margin:2% auto;padding:1%;border:1px solid #b0b435;border-radius:10px;">
     <div class="text-center">
-      <a href="{{route('customer.login')}}" class="h1"><b>Admin</b>LTE</a>
+      <a href="{{route('customer.login')}}" class="h1">Retrieve your password</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
@@ -10,7 +10,7 @@
       <input type="hidden" name="passwordNew" value="{{rand(10000,1000000)}}">
       @csrf
         <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" class="form-control" placeholder="Email" required data-error="Enter email to send confirm.">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

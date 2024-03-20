@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title',' List Product Management')
+@section('title','Product Trash')
 @section('main')
 
  <div class="container">
@@ -21,11 +21,12 @@
                    <th>ID</th>
                    <th>Name</th>
                    <th>Image</th>
-                   <th>Price/SalePrice</th>
-                   <th>Cat_id</th>
-                   <th>Description</th>
+                   <th>Original Price</th>
+                   <th>New Price</th>
+                   <th>Category</th>
                    <th>Status</th>
                    <th>Created_at</th>
+                   <th>Updated_at</th>
                    <th colspan="2">Action</th>
                    
                </tr>
@@ -34,20 +35,26 @@
            <tbody>
             @foreach($pros as $pro)
             <tr>
-                <td>{{$pro->id}}</td>
+               <td>#{{$pro->id}}</td>
                 <td>{{$pro->name}}</td>
-                <td>  <img src="{{url('public/uploads')}}/{{$pro->image}}"  width="80"></td>
-                <td>{{$pro->price}} / <span class="badge badge-success"> {{$pro->sale_price}}</span></td>
-                <td>{{$pro->category_id}}</td>
-                <td>{!!$pro->description!!}</td>
+                <td>  <img src="{{URL::asset('uploads')}}/{{$pro->image}}"  width="100" height="100px" style="object-fit: cover"></td>
+                <td><span class="badge badge-danger">${{ number_format($pro->price, 2) }} </span></td>
+                <td><span class="badge badge-primary">${{ number_format($pro->sale_price, 2) }} </span></td>
+                <td>
+                @foreach($cats as $cat)
+                    <span class="badge badge-success"> {{$cat->id == $pro->category_id ? $cat->name :'' }}</span>
+                @endforeach
+                </td>
+
                 <td>
                     @if($pro->status == 0)
-                        <span class="badge badge-success">Stocking</span>
+                        <span class="badge badge-primary">Stocking</span>
                     @else
                         <span class="badge badge-danger">Sold Out</span>
                     @endif
                 </td>
                 <td>{{$pro->created_at->format('m-d-Y')}}</td>
+                <td>{{$pro->updated_at->format('m-d-Y')}}</td>
                
                 <td><a href="{{route('product.restore', $pro->id)}}" class="btn btn-success"><i class="fa fa-trash-restore" aria-hidden="true"></i></a></td>
                 <td>
